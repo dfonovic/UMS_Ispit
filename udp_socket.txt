@@ -1,0 +1,20 @@
+# udp-echo-server.py
+
+import socket
+
+HOST = "0.0.0.0"
+PORT = 5005 # Port to listen on (non-privileged ports are > 1023)
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Create a UDP socket
+server_socket.bind((HOST, PORT))  # Bind socket to address and port
+
+print(f"UDP server listening on {HOST}:{PORT}")
+
+while True:
+    data, addr = server_socket.recvfrom(1024)  # Receive message from client
+    print(f"Received from client {addr}:", data.decode())
+
+    response = f"Echo: {data.decode()}"
+    server_socket.sendto(response.encode(), addr)  # Send response back to client
+
+
