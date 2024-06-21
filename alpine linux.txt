@@ -1,0 +1,9 @@
+apk update
+apk add curl
+apk add python3
+apk add py3-paramiko
+apk add nano
+
+nc -u ums.dfo.ovh 5005 #koristimo netcat: -u opcija za udp 
+
+
